@@ -10,6 +10,23 @@ function App() {
   const onSubmitHandler = (e) => {
     console.log("file data ====>", fileData);
     e.preventDefault();
+
+    const data = new FormData();
+    data.append("image", fileData); // image key to use in Postman
+
+    const server = "http://localhost:5000";
+
+    // Send reqest to backend - Single upload
+    fetch(`${server}/single`, {
+      method: "POST",
+      body: data,
+    })
+      .then((result) => {
+        console.log("File sent successfully", result);
+      })
+      .catch((err) => {
+        console.log("Something Went Wrong", err);
+      });
   };
 
   return (
