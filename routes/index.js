@@ -10,7 +10,11 @@ router.get("/", function (req, res, next) {
 
 router.post("/single_upload", upload.single("image"), (req, res, next) => {
   console.log(req.file);
-  res.send("uploaded successfully");
+  res.send({
+    status: "success",
+    message: "File uploaded successfully",
+    data: req.file,
+  });
 });
 
 module.exports = router;
