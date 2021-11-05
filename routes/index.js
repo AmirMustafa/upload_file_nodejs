@@ -8,12 +8,21 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-router.post("/single_upload", upload.single("image"), (req, res, next) => {
+router.post("/single", upload.single("image"), (req, res) => {
   console.log(req.file);
   res.send({
     status: "success",
     message: "File uploaded successfully",
     data: req.file,
+  });
+});
+
+router.post("/multiple", upload.array("images"), (req, res) => {
+  console.log(req.files);
+  res.send({
+    status: "success",
+    message: "Files uploaded successfully",
+    data: req.files,
   });
 });
 
