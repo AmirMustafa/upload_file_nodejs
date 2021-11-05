@@ -1,7 +1,7 @@
 const multer = require("multer");
 var fs = require("fs");
 
-var dir = "./images/nov";
+var dir = "./public/images/nov";
 if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir, { recursive: true });
 }
