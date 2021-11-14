@@ -38,6 +38,12 @@ function App() {
         <br />
         <button type="submit">Send to backend</button>
       </form>
+      <br />
+      <img
+        src="http://localhost:5000/images/1636891838696-XEBIA 1.jpeg"
+        alt="S3 file"
+        width="800"
+      />
     </div>
   );
 }
