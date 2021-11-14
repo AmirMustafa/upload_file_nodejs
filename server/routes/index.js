@@ -2,14 +2,19 @@ var express = require("express");
 var router = express.Router();
 
 const upload = require("../common");
+const { uploadFile } = require("../s3");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-router.post("/single", upload.single("image"), (req, res) => {
+router.post("/single", upload.single("image"), async (req, res) => {
   console.log(req.file);
+
+  const result = await uploadFile(req.file);
+  console.log("S3 response", result);
+
   res.send({
     status: "success",
     message: "File uploaded successfully",
